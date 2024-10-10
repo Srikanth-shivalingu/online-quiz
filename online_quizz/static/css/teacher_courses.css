@@ -1,0 +1,53 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color:navy;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+    
+       .course li {
+            background-color: #fff;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-weight:bold;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    
+        .course li a {
+            color: #008080;
+            text-decoration: none;
+            font-weight:bold;
+            font-style:italic;
+        }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .course li {
+        margin-bottom: 10px;
+        font-weight:bold;
+        font-size:20px;
+        font-style:italic;
+    }
+
+   .add a {
+        text-decoration: none;
+        padding:10px;
+        margin-top:30px;
+        margin-bottom: 80px;
+        display: block;
+        justify-content: center;
+
+    }

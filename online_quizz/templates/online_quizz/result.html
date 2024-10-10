@@ -1,0 +1,31 @@
+
+{% extends 'online_quizz/base.html' %}
+{% block link %}
+  <link rel="stylesheet" href="/static/css/result.css" >
+{% endblock %}
+{% block title %}
+    {{ course.course_name }}
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <h2>Result</h2>
+        <div class="result-info">
+          <p class="result-label">Marks obtained:</p>
+          <p class="result-value">{{ result.marks }}</p>
+        </div>
+        <div class="result-info">
+          <p class="result-label">Total marks:</p>
+          <p class="result-value">{{ total_marks }}</p>
+        </div>
+        <div class="result-info">
+          <p class="result-label">Percentage:</p>
+          <p class="result-value">{{ percentage|floatformat:2 }}%</p>
+        </div>
+        <div class="result">
+          <h3 class="result-heading">Congratulations on your achievement!</h3>
+          <p class="percentage">ALL THE BEST FOR NEXT QUIZ</p>
+        </div>
+    </div>
+    <!-- <p>Time taken: {{ time_taken }}</p> -->
+{% endblock %}

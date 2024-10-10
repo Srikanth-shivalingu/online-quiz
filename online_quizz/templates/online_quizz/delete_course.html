@@ -1,0 +1,19 @@
+{% extends 'online_quizz/dashborad_base.html' %}
+{% block link %}
+  <link rel="stylesheet" href="/static/css/delete_course.css" >
+{% endblock %}
+{% block title %}
+    Delete Courses
+{% endblock %}
+{% block content %}
+    <h1>Delete Course</h1>
+    <h3>Are you sure you want to delete the course "{{ course.course_name }}"?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="container">
+            <button type="submit">Delete</button><br>
+            <div class="a"><a class="btn btn-success" href="{% url 'online_quizz:teacher_dashboard' %}">Cancel</a></div>
+        </div>
+       
+    </form>
+{% endblock %}

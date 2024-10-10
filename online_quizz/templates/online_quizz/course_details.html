@@ -1,0 +1,33 @@
+{% extends 'online_quizz\dashborad_base.html' %}
+{% block link %}
+    <link rel="stylesheet" href="/static/css/course_details.css">
+{% endblock %}
+{% block title %}
+    Course Details
+{% endblock %}
+{% block content %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <h3 style="color: green;"> {% if message.tags %} {% endif %}>{{ message }}</h3>
+    {% endfor %}
+</div>
+{% endif %}
+
+    <div class="container">
+        <h2>Course Name: {{ course.course_name }}</h2>
+        <p>Description: {{ course.description }}</p>
+        <p>Total Marks: {{ course.total_marks }}</p>
+        <h3>Questions:</h3>
+        <ul>
+            {% for question in questions %}
+            <h3>{{question.question_number}} . {{ question.question }} --   <a class="btn btn-primary" href="{% url 'online_quizz:update_question' course.id question.id %}">update question</a> --  <a class="btn btn-danger" href="{% url 'online_quizz:delete_question' course.id question.id %}">Delete</a></h3>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="button-container">
+        <a href="{% url 'online_quizz:add_question' course.id %}"><button type="button">Add Question</button></a>
+        <a href="{% url 'online_quizz:update_course' course.id %}"><button type="button">Update Course</button></a>
+        <a href="{% url 'online_quizz:delete_course' course.id %}"><button type="button">Delete Course</button></a>
+    </div>
+{% endblock %}

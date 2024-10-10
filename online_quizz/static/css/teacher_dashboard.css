@@ -1,0 +1,27 @@
+.objects {
+    margin-bottom: 35px;
+    border-radius: 5px;
+    background-color:rgba(147, 112, 216, 0.24);
+}
+
+.objects h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.objects p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.objects ul {
+    list-style: none;
+}
+
+.objects li {
+    font-size: 20px;
+    color: #999;
+    margin-bottom: 10px;
+}

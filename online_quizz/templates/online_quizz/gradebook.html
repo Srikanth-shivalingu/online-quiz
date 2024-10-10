@@ -1,0 +1,30 @@
+{% extends 'online_quizz/base.html' %}
+{% block link %}
+  <link rel="stylesheet" href="/static/css/gradebook.css" >
+{% endblock %}
+{% block title %}
+    Gradebook
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <h2 class="gradebook-title">Gradebook</h2>
+    <p class="overall-percentage">Overall Percentage: {{ overall_percentage|floatformat:2 }}%</p>
+    <table class="profile-table">
+        <tr>
+            <th>Course Name</th>
+            <th>Obtained Marks</th>
+            <th>Total Marks</th>
+            <th>Percentage</th>
+            <!-- <th>Date</th> -->
+        </tr>
+        {% for data in profile_data %}
+        <tr>
+            <td>{{ data.course_name }}</td>
+            <td>{{ data.marks }}</td>
+            <td>{{ data.total_marks }}</td>
+            <td>{% if data.percentage %}{{ data.percentage|floatformat:2 }}%{% else %}N/A{% endif %}</td>
+            <!-- <td>{{ data.date }}</td> -->
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

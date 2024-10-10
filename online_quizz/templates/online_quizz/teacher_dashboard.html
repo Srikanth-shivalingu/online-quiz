@@ -1,0 +1,28 @@
+{% extends 'online_quizz\dashborad_base.html' %}
+{% block link %}
+  <link rel="stylesheet" href="/static/css/teacher_dashboard.css" >
+{% endblock %}
+{% block title %}
+	Dashboard
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="objects">
+                        <h2>Student Details</h2>
+                        <p><a href="{% url 'online_quizz:teacher_view' %}">Total Students: {{ student_count }}</a></p>
+                    </div>
+                    <div class="objects">
+                        <h2>Course Management</h2>
+                        <p><a href="{% url 'online_quizz:teacher_courses' %}">Total Courses:{{ course_count }}</a></p>
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+{% endblock %}

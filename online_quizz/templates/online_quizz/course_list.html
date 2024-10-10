@@ -1,0 +1,37 @@
+{% extends 'online_quizz\base.html' %}
+{% block link %}
+  <link rel="stylesheet" href="/static/css/course_list.css" >
+{% endblock %}
+{% block title %}
+	course list
+{% endblock %}
+{% block content %}
+    {% load static %}
+	<div class="card">
+		<h2>Technical Courses</h2>
+		<ul class="course-list">
+			{% for course in technical_courses %}
+				<li class="course-item">
+					<h4>{{ course.course_name }}</h4>
+					<a href="{% url 'online_quizz:course_detail' pk=course.pk %}" class="btn btn-primary">View Quiz</a>
+				</li>
+				<br>
+			{% empty %}
+				<li>No technical courses available.</li>
+			{% endfor %}
+		</ul>
+
+		<h2>Non-Technical Courses</h2>
+		<ul class="course-list">
+			{% for course in non_technical_courses %}
+				<li class="course-item">
+					<h4>{{ course.course_name }}</h4>
+					<a href="{% url 'online_quizz:course_detail' pk=course.pk %}" class="btn btn-primary">View Quiz</a>
+				</li>
+				<br>
+			{% empty %}
+				<li>No non-technical  courses available.</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

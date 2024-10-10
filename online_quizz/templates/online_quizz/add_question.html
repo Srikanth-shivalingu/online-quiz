@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>add question</title>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<link rel="stylesheet" href="/static/css/add_question.css" />
+		<!------ Include the above in your HEAD tag ---------->
+		</head>
+		<body>
+			<header>
+				<h1>Online Quizz</h1>
+				{% if user.is_authenticated %}
+					<div class="user-container">
+						<div class="dropdown">
+							<button onclick="toggleDropdown()" class="dropbtn">{{ user.username }}   <i class="fa-solid fa-user"></i></button>
+							<div id="dropdown-content" class="dropdown-content">
+								<a href="{% url 'online_quizz:logout'%}">Logout</a>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="user-container">
+						<a href="#" class="login-link">Login</a>
+					</div>
+				{% endif %}
+			</header>
+			<div class="container">
+				<div class="row">
+					<h1>Teacher Dashboard</h1>
+					<hr/>
+					
+					<div id="wrapper">
+					<!-- Sidebar -->
+						<div id="sidebar-wrapper">
+							<ul class="sidebar-nav" style="margin-left:0;">
+								<li class="sidebar-brand">
+									
+									<a href="#menu-toggle"  id="menu-toggle" style="margin-top:20px;float:right;" > <i class="fa fa-bars " style="font-size:20px !Important;" aria-hidden="true" aria-hidden="true"></i> </a>
+									
+								</li>
+								<li>
+									<a href="{% url 'online_quizz:teacher_dashboard' %}"><i class="fa-solid fa-house-user"></i> <span style="margin-left:10px;">Dashboard</span>  </a>
+								</li>
+								<!-- <li>
+									<a href="#"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> <span style="margin-left:10px;">courses</span> </a>
+								</li> -->
+								<!-- <li>
+									<a href="#"> <i class="fa-solid fa-clipboard-question"></i> <span style="margin-left:10px;"> questions</span> </a>
+								</li> -->
+								<li>
+									<a href="{% url 'online_quizz:teacher_courses' %}"> <i class="fa-solid fa-book"></i> <span style="margin-left:10px;"> courses</span> </a>
+								</li>
+								<!-- <li>
+									<a href="#"><i class="fa fa-info-circle " aria-hidden="true"> </i> <span style="margin-left:10px;">Section </span> </a>
+								</li> -->
+								<li>
+									<a href="#"> <i class="fa-solid fa-right-from-bracket"></i> <span style="margin-left:10px;"> logout</span> </a>
+								</li>
+							</ul>
+						</div>
+						<!-- /#sidebar-wrapper -->
+				
+						<!-- Page Content -->
+						<h2>Add Question</h2>
+						<form method="POST" action="{% url 'online_quizz:add_question' course_id=course.id %}">
+							{% csrf_token %}
+							<div class="form-group">
+								<label for="question">Question:</label>
+								<textarea class="form-control" id="question" name="question" rows="3"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="marks">Marks</label>
+								<input type="number" class="form-control" id="marks" name="marks">
+							</div>
+							<div class="form-group">
+								<label for="question_number">Question Number</label>
+								<input type="text" class="form-control" id="question_number" name="question_number">
+							</div>
+							<div class="form-group">
+								<label for="Option1">Option 1:</label>
+								<input type="text" class="form-control" id="option1" name="Option1">
+							</div>
+							<div class="form-group">
+								<label for="Option2">Option 2:</label>
+								<input type="text" class="form-control" id="option2" name="Option2">
+							</div>
+							<div class="form-group">
+								<label for="Option3">Option 3:</label>
+								<input type="text" class="form-control" id="option3" name="Option3">
+							</div>
+							<div class="form-group">
+								<label for="option4">Option 4:</label>
+								<input type="text" class="form-control" id="option4" name="Option4">
+							</div>
+							<div class="form-group">
+								<label for="answer">Answer:</label>
+								<select class="form-control" id="answer" name="answer">
+									<option value="Option1">Option 1</option>
+									<option value="Option2">Option 2</option>
+									<option value="Option3">Option 3</option>
+									<option value="Option4">Option 4</option>
+								</select>
+							</div>
+							<button id="submit-btn" type="submit" class="btn btn-primary submit-button">Submit</button>
+						</form>
+					</div>				 
+					<script>
+						$("#menu-toggle").click(function(e) {
+							e.preventDefault();
+							$("#wrapper").toggleClass("toggled");
+						});
+					</script>	
+								
+			
+				
+				</div>
+			</div>
+			
+
+			<script>
+				function toggleDropdown() {
+					var dropdownContent = document.getElementById("dropdown-content");
+					dropdownContent.classList.toggle("show");
+				}
+				
+				window.onclick = function(event) {
+					if (!event.target.matches('.dropbtn')) {
+						var dropdowns = document.getElementsByClassName("dropdown-content");
+						for (var i = 0; i < dropdowns.length; i++) {
+							var openDropdown = dropdowns[i];
+							if (openDropdown.classList.contains('show')) {
+								openDropdown.classList.remove('show');
+							}
+						}
+					}
+				}
+				
+			</script>
+			
+		</body>
+	</html>
+
+
+

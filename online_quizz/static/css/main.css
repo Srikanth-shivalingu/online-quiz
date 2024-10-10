@@ -1,0 +1,75 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.all-content{
+    background:rgb(169,149,149);
+}
+.navbar {
+ background-color: skyblue;
+ padding: 0 50px;
+ font-weight: bold;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+#logo{
+    font-size: 23px;
+    color:white
+}
+#logo img{
+    margin-bottom: 10px;
+}
+.nav-link{
+    color:white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    margin-left: 15px;
+    transition: 0.5 ease;
+}
+.nav-link:hover{
+    background-color:blue;
+    color:white;
+    border-radius: 5px;
+}
+.Home{
+    width:100%;
+    height: 88.5vh;
+    display: flex;
+    background-image: linear-gradient(rgba(0,0,0,0.3)rgba(0,0,0,0.)),url(images/bb.webp);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position:relative;
+    z-index: 0;
+}
+.Home img{
+    flex:1 1 400px;
+}
+.Home .img img{
+    width:100%
+}
+.Home .content{
+    flex:1 1 400px;
+    margin-left:60px;
+}
+.content h2{
+    font-size: 60px;
+    color:rgb(37, 37, 117);
+    text-shadow: 1px 1px 1px black;
+
+}
+.changecontent::after{
+    content:' ';
+    color:blue; 
+    animation:changetext 10s infinite linear;
+}
+
+.content .btn{
+    width:110px;
+    height:38px;
+    background-color:blue;
+    color:white;
+}
